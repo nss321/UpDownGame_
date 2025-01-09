@@ -34,14 +34,7 @@ class UpDownViewController: UIViewController {
         }
     }
     
-    var target: Int {
-        if let setNumber {
-            return Array(1...setNumber).randomElement() ?? 1
-        } else {
-            print("target 초기화 실패")
-            return 1
-        }
-    }
+    lazy var target: Int = Array(1...(setNumber ?? 1)).randomElement() ?? 1
     
     var tryCount: Int = 0
     
@@ -49,6 +42,8 @@ class UpDownViewController: UIViewController {
     private let leftRightInset: CGFloat = 16
     private let circleSpacing: CGFloat = 4
     lazy var circleDiameter: CGFloat = (deviceWidth - circleSpacing * 4) / 6
+    
+    var arrayOffset = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -67,13 +62,41 @@ class UpDownViewController: UIViewController {
     }
     
     @IBAction func checkButtonTapped(_ sender: UIButton) {
+        print(sender.tag)
         checkButton.isEnabled = false
-        collectionView.isUserInteractionEnabled = true
-        for i in 0..<upDownList.count {
+        checkCorrectAnswer(select: sender.tag)
+    }
+    
+    func checkCorrectAnswer(select: Int){
+        var index = 0
+        tryCount += 1
+        tryLabel.text = "시도 횟수: \(tryCount)"
+        if select == target {
+            upDownLabel.text = "GOOD!"
+//            collectionView.isUserInteractionEnabled = false
+            showAlert("YOU WIN!", "메인으로 돌아가시겠어요?") { _ in
+                self.navigationController?.popViewController(animated: true)
+            }
+        } else {
+            if select < target {
+                index = upDownList.filter { $0.number <= select }.count
+                upDownList.removeSubrange(0..<index)
+            } else {
+                index = upDownList.filter { $0.number < select}.count
+                upDownList.removeSubrange(index..<upDownList.count)
+            }
+        }
+        print(upDownList.indices)
+        resetGame()
+    }
+    
+    func resetGame() {
+        for i in upDownList.indices {
             upDownList[i].isSelected = false
         }
+        checkButton.tag = 0
+        collectionView.reloadData()
     }
-
 }
 
 
@@ -100,32 +123,56 @@ extension UpDownViewController: UICollectionViewDataSource, UICollectionViewDele
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+//        print(#function)
+        let item = upDownList[indexPath.item]
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: UpDownCollectionViewCell.identifier, for: indexPath) as! UpDownCollectionViewCell
-//        
-//        cell.clipsToBounds = true
-//        cell.layer.cornerRadius = circleDiameter / 2
         
-        cell.config(row: upDownList[indexPath.item])
+        cell.config(row: item)
+
+//        print(indexPath.item, item.isSelected)
+//        cell.isUserInteractionEnabled = item.isSelected ? true : false
+//        // TODO: 로직 개선
+//        var cnt = 0
+//        upDownList.forEach {
+//            if $0.isSelected {
+//                cnt += 1
+//            }
+//        }
+//        if cnt == 0 {
+//            cell.isUserInteractionEnabled = true
+//        }
+        
+        /// 모든 셀이
+        if upDownList.filter({ $0.isSelected == true }).isEmpty {
+            cell.isUserInteractionEnabled = true
+        }
         
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        checkButton.isEnabled = true
-        collectionView.isUserInteractionEnabled = false
-        tryCount += 1
-        tryLabel.text = "시도 횟수: \(tryCount)"
-        upDownList[indexPath.item].isSelected.toggle()
-        
-        if upDownList[indexPath.item].number == target {
-            upDownLabel.text = "GOOD !"
-            
+        print(#function)
+        if upDownList[indexPath.item].isSelected {
+            checkButton.isEnabled = false
+            upDownList[indexPath.item].isSelected = false
         } else {
-            
+            checkButton.isEnabled = true
+            checkButton.tag = upDownList[indexPath.item].number
+            upDownList[indexPath.item].isSelected = true
         }
-        
-        collectionView.reloadData()
-        
+        print(target)
+    }
+    
+    /// didDeselectItemAt은 대체 언제 호출되는건지,,,?
+//    func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
+//        print(#function)
+//        checkButton.isEnabled = false
+//        upDownList[indexPath.item].isSelected.toggle()
+//    }
+    
+    
+    
+    func disabledEveryCellExceptFor(cell: Int) {
         
     }
 }

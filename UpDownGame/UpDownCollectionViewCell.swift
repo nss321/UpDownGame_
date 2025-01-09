@@ -32,5 +32,6 @@ class UpDownCollectionViewCell: UICollectionViewCell {
         backgroundColor = row.isSelected ? .black : .white
         clipsToBounds = true
         layer.cornerRadius = row.cornerRadius
+        isUserInteractionEnabled = row.isSelected ? true : false
     }
 }

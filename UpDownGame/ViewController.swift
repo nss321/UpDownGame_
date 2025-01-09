@@ -27,12 +27,12 @@ class ViewController: UIViewController {
         pushGameViewController()
     }
     
-    func showAlert(_ title: String, _ message: String, handler: ((UIAlertAction) -> Void)?) {
-        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        let ok = UIAlertAction(title: "확인", style: .default, handler: handler)
-        alert.addAction(ok)
-        present(alert, animated: true)
-    }
+//    func showAlert(_ title: String, _ message: String, handler: ((UIAlertAction) -> Void)?) {
+//        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+//        let ok = UIAlertAction(title: "확인", style: .default, handler: handler)
+//        alert.addAction(ok)
+//        present(alert, animated: true)
+//    }
     
     @objc func dismissKeyboard(_ sender: UITapGestureRecognizer){
         view.endEditing(true)
