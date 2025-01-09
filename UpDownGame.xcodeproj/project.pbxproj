@@ -13,6 +13,11 @@
 		110DB7532D2FA62D009B89CD /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 110DB7522D2FA62D009B89CD /* Base */; };
 		110DB7552D2FA62F009B89CD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 110DB7542D2FA62F009B89CD /* Assets.xcassets */; };
 		110DB7582D2FA62F009B89CD /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 110DB7572D2FA62F009B89CD /* Base */; };
+		110DB7602D2FA94D009B89CD /* UpDownViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 110DB75F2D2FA94D009B89CD /* UpDownViewController.swift */; };
+		110DB7632D2FA989009B89CD /* UpDownCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 110DB7622D2FA989009B89CD /* UpDownCollectionViewCell.xib */; };
+		110DB7642D2FA989009B89CD /* UpDownCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 110DB7612D2FA989009B89CD /* UpDownCollectionViewCell.swift */; };
+		110DB7672D2FADBD009B89CD /* UIScreen+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 110DB7662D2FADB8009B89CD /* UIScreen+.swift */; };
+		110DB7692D2FC81A009B89CD /* UpDown.swift in Sources */ = {isa = PBXBuildFile; fileRef = 110DB7682D2FC81A009B89CD /* UpDown.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +29,11 @@
 		110DB7542D2FA62F009B89CD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		110DB7572D2FA62F009B89CD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		110DB7592D2FA62F009B89CD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		110DB75F2D2FA94D009B89CD /* UpDownViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpDownViewController.swift; sourceTree = "<group>"; };
+		110DB7612D2FA989009B89CD /* UpDownCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpDownCollectionViewCell.swift; sourceTree = "<group>"; };
+		110DB7622D2FA989009B89CD /* UpDownCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UpDownCollectionViewCell.xib; sourceTree = "<group>"; };
+		110DB7662D2FADB8009B89CD /* UIScreen+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIScreen+.swift"; sourceTree = "<group>"; };
+		110DB7682D2FC81A009B89CD /* UpDown.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpDown.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +66,7 @@
 		110DB74A2D2FA62D009B89CD /* UpDownGame */ = {
 			isa = PBXGroup;
 			children = (
+				110DB7652D2FADB1009B89CD /* Extension */,
 				110DB74B2D2FA62D009B89CD /* AppDelegate.swift */,
 				110DB74D2D2FA62D009B89CD /* SceneDelegate.swift */,
 				110DB74F2D2FA62D009B89CD /* ViewController.swift */,
@@ -63,8 +74,20 @@
 				110DB7542D2FA62F009B89CD /* Assets.xcassets */,
 				110DB7562D2FA62F009B89CD /* LaunchScreen.storyboard */,
 				110DB7592D2FA62F009B89CD /* Info.plist */,
+				110DB75F2D2FA94D009B89CD /* UpDownViewController.swift */,
+				110DB7612D2FA989009B89CD /* UpDownCollectionViewCell.swift */,
+				110DB7622D2FA989009B89CD /* UpDownCollectionViewCell.xib */,
+				110DB7682D2FC81A009B89CD /* UpDown.swift */,
 			);
 			path = UpDownGame;
+			sourceTree = "<group>";
+		};
+		110DB7652D2FADB1009B89CD /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				110DB7662D2FADB8009B89CD /* UIScreen+.swift */,
+			);
+			path = Extension;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -126,6 +149,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				110DB7552D2FA62F009B89CD /* Assets.xcassets in Resources */,
+				110DB7632D2FA989009B89CD /* UpDownCollectionViewCell.xib in Resources */,
 				110DB7582D2FA62F009B89CD /* Base in Resources */,
 				110DB7532D2FA62D009B89CD /* Base in Resources */,
 			);
@@ -139,7 +163,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				110DB7502D2FA62D009B89CD /* ViewController.swift in Sources */,
+				110DB7692D2FC81A009B89CD /* UpDown.swift in Sources */,
+				110DB7672D2FADBD009B89CD /* UIScreen+.swift in Sources */,
+				110DB7602D2FA94D009B89CD /* UpDownViewController.swift in Sources */,
 				110DB74C2D2FA62D009B89CD /* AppDelegate.swift in Sources */,
+				110DB7642D2FA989009B89CD /* UpDownCollectionViewCell.swift in Sources */,
 				110DB74E2D2FA62D009B89CD /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -295,11 +323,12 @@
 				DEVELOPMENT_TEAM = W43DLLFB4Q;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = UpDownGame/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "업다운 게임";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -307,9 +336,13 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.sean.SeSAC.Assignment.UpDownGame;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -323,11 +356,12 @@
 				DEVELOPMENT_TEAM = W43DLLFB4Q;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = UpDownGame/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "업다운 게임";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -335,9 +369,13 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.sean.SeSAC.Assignment.UpDownGame;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
